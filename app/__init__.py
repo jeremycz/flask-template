@@ -72,4 +72,10 @@ def create_app(app_config: Union[str, dict, None] = None) -> Flask:
 
     # Load blueprints
 
+    # Allows access to application context during import
+    with app.app_context():
+        from app import model
+
+    app.register_blueprint(model.bp)
+
     return app
