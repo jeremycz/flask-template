@@ -28,12 +28,12 @@ model = Model()
 model.load(model_name)
 
 
-@bp.route("/status", methods="GET")
+@bp.route("/status", methods=["GET"])
 def status():
     return { "loaded": model.ready }
 
 
-@bp.route("/load", methods="POST")
+@bp.route("/load", methods=["POST"])
 def load():
     if request.method == "POST":
         model_path = request.args.get("model_path", None)
@@ -41,7 +41,7 @@ def load():
             model.load(model_path)
 
 
-@bp.route("/predict", methods="POST")
+@bp.route("/predict", methods=["POST"])
 def predict():
     """"""
     response = None
